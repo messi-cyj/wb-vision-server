@@ -1,0 +1,12 @@
+[2023-03-18T21:41:56.044 info Netsdk:0 42943:123145339105280 AVNetSDKMgr.cpp:500]Load avnetsdk library dynamically
+[2023-03-18T21:41:56.044 info Netsdk:0 42943:123145339105280 AVNetSDKMgr.cpp:528]load avnetsdk err:dlopen(/private/var/folders/kg/53d21vc96sgcny6lkpt3crvm0000gn/T/libavnetsdk.so, 0x0001): tried: '/private/var/folders/kg/53d21vc96sgcny6lkpt3crvm0000gn/T/libavnetsdk.so' (no such file)
+
+[2023-03-18T21:41:56.543 info Netsdk:0 42943:123145339105280 AVNetSDKMgr.cpp:544]avnetsdk module handle: 0x20f944920
+
+[2023-03-18T21:41:56.543 info Netsdk:0 42943:123145339105280 AVNetSDKMgr.cpp:815]Load configsdk dynamically
+[2023-03-18T21:41:56.545 info Netsdk:0 42943:123145339105280 dhnetsdk.cpp:253]Enter CLIENT_SetAutoReconnect:[cbAutoConnect=0x0, dwUser=0x0].
+[2023-03-18T21:41:56.545 info Netsdk:0 42943:123145339105280 dhnetsdk.cpp:255]Leave CLIENT_SetAutoReconnect.
+[2023-03-18T21:41:56.545 info Netsdk:0 42943:123145339105280 dhnetsdk.cpp:273]Enter CLIENT_SetConnectTime:[nWaitTime=5000, nTryTimes=1].
+[2023-03-18T21:41:56.545 info Netsdk:0 42943:123145339105280 dhnetsdk.cpp:286]Leave CLIENT_SetConnectTime.
+[2023-03-18T21:41:56.545 info Netsdk:0 42943:123145339105280 dhnetsdk.cpp:297]Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=10000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=3000, nConnectBufSize=0, nGetConnInfoTime=3000, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2023-03-18T21:41:56.545 info Netsdk:0 42943:123145339105280 dhnetsdk.cpp:312]Leave CLIENT_SetNetworkParam.

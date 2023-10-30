@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizMajorMapper">
+    
+    <resultMap type="BizMajor" id="BizMajorResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="description"    column="description"    />
+        <result property="academyId"    column="academy_id"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizMajorVo">
+        select id, name, description, academy_id, create_time, update_time, create_user_id, update_user_id from biz_major
+    </sql>
+
+    <select id="selectBizMajorList" parameterType="BizMajor" resultMap="BizMajorResult">
+        <include refid="selectBizMajorVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="description != null  and description != ''"> and description = #{description}</if>
+            <if test="academyId != null "> and academy_id = #{academyId}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+    
+    <select id="selectBizMajorById" parameterType="Long" resultMap="BizMajorResult">
+        <include refid="selectBizMajorVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizMajor" parameterType="BizMajor" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_major
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="description != null">description,</if>
+            <if test="academyId != null">academy_id,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="description != null">#{description},</if>
+            <if test="academyId != null">#{academyId},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizMajor" parameterType="BizMajor">
+        update biz_major
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="academyId != null">academy_id = #{academyId},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizMajorById" parameterType="Long">
+        delete from biz_major where id = #{id}
+    </delete>
+
+    <delete id="deleteBizMajorByIds" parameterType="String">
+        delete from biz_major where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,7 @@
+
+bjavascript:S6661
+"AUse an object spread instead of `Object.assign` eg: `{ ...foo }`.(Þ˜ Áýÿÿÿÿ
+?javascript:S2310="Remove this assignment of "v".(‡íû³ùÿÿÿÿ
+Pjavascript:S1854="/Remove this useless assignment to variable "v".(‡íû³ùÿÿÿÿ
+|javascript:S6582I"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(Ðž÷Èþÿÿÿÿ
+wjavascript:S6582Z"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(ÿºúÛ

@@ -1,0 +1,28 @@
+
+b
+java:S3252Q"LUse static access with "org.apache.commons.lang3.StringUtils" for "isBlank".(™øœå
+h
+java:S3776j"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(áŒÜ‡
+e
+java:S3252x"OUse static access with "org.apache.commons.lang3.StringUtils" for "isNotBlank".(ê¨ã¶
+e
+java:S3252x"OUse static access with "org.apache.commons.lang3.StringUtils" for "isNotBlank".(ê¨ã¶
+f
+java:S3252–"OUse static access with "org.apache.commons.lang3.StringUtils" for "isNotBlank".(øª›Ø
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Ç§ßÉşÿÿÿÿ
+V
+java:S1128"@Remove this unused import 'com.ruoyi.common.constant.Constants'.(ôçÍ
+Z
+java:S1128"DRemove this unused import 'com.ruoyi.common.constant.UserConstants'.(Ğ¾ê´
+^
+java:S1128"IRemove this unused import 'com.ruoyi.common.core.domain.model.LoginBody'.(îÜŞ2
+V
+java:S1128
+"@Remove this unused import 'com.ruoyi.common.utils.ServletUtils'.(´€…Ã
+a
+java:S1128"KRemove this unused import 'com.ruoyi.system.domain.vo.BizTeachingRecordVo'.(’Áù¨
+N
+java:S1128"3Remove this unused import 'org.joda.time.DateTime'.(×¥…©úÿÿÿÿ
+M
+java:S1128"2Remove this unused import 'org.joda.time.Seconds'.(öÒÿÿÿÿÿ

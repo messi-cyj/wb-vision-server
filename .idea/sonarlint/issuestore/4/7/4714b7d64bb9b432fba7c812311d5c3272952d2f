@@ -1,0 +1,6 @@
+
+IWeb:AvoidCommentedOutCodeCheck3"Remove this commented out code.(ï‘Ï‡
+Djavascript:S1128~"(Remove this unused import of 'getMajor'.(ç‰†“
+Djavascript:S1128~"(Remove this unused import of 'delMajor'.(ç‰†“
+Djavascript:S1128~"(Remove this unused import of 'addMajor'.(ç‰†“
+Gjavascript:S1128~"+Remove this unused import of 'updateMajor'.(ç‰†“

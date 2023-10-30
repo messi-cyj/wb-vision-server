@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizClassCourseMapper">
+    
+    <resultMap type="BizClassCourse" id="BizClassCourseResult">
+        <result property="id"    column="id"    />
+        <result property="classId"    column="class_id"    />
+        <result property="courseId"    column="course_id"    />
+        <result property="classroomId"    column="classroom_id"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizClassCourseVo">
+        select id, class_id, course_id, classroom_id, create_time, update_time, create_user_id, update_user_id from biz_class_course
+    </sql>
+
+    <select id="selectBizClassCourseList" parameterType="BizClassCourse" resultMap="BizClassCourseResult">
+        <include refid="selectBizClassCourseVo"/>
+        <where>  
+            <if test="classId != null "> and class_id = #{classId}</if>
+            <if test="courseId != null "> and course_id = #{courseId}</if>
+            <if test="classroomId != null "> and classroom_id = #{classroomId}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizClassCourseById" parameterType="Long" resultMap="BizClassCourseResult">
+        <include refid="selectBizClassCourseVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizClassCourse" parameterType="BizClassCourse" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_class_course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classId != null">class_id,</if>
+            <if test="courseId != null">course_id,</if>
+            <if test="classroomId != null">classroom_id,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classId != null">#{classId},</if>
+            <if test="courseId != null">#{courseId},</if>
+            <if test="classroomId != null">#{classroomId},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizClassCourse" parameterType="BizClassCourse">
+        update biz_class_course
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="classId != null">class_id = #{classId},</if>
+            <if test="courseId != null">course_id = #{courseId},</if>
+            <if test="classroomId != null">classroom_id = #{classroomId},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizClassCourseById" parameterType="Long">
+        delete from biz_class_course where id = #{id}
+    </delete>
+
+    <delete id="deleteBizClassCourseByIds" parameterType="String">
+        delete from biz_class_course where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

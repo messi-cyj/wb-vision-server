@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizTeachingRecordMapper">
+    
+    <resultMap type="BizTeachingRecord" id="BizTeachingRecordResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="academyId"    column="academy_id"    />
+        <result property="majorId"    column="major_id"    />
+        <result property="gradeId"    column="grade_id"    />
+        <result property="classId"    column="class_id"    />
+        <result property="courseId"    column="course_id"    />
+        <result property="teacherId"    column="teacher_id"    />
+        <result property="classroomId"    column="classroom_id"    />
+        <result property="times"    column="times"    />
+        <result property="duration"    column="duration"    />
+        <result property="status"    column="status"    />
+        <result property="startTime"    column="start_time"    />
+        <result property="endTime"    column="end_time"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizTeachingRecordVo">
+        select id, name, academy_id, major_id, grade_id, class_id, course_id, teacher_id, classroom_id, times, duration, status, start_time, end_time, create_time, update_time, create_user_id, update_user_id from biz_teaching_record
+    </sql>
+
+    <select id="selectBizTeachingRecordList" parameterType="BizTeachingRecord" resultMap="BizTeachingRecordResult">
+        <include refid="selectBizTeachingRecordVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="academyId != null "> and academy_id = #{academyId}</if>
+            <if test="majorId != null "> and major_id = #{majorId}</if>
+            <if test="gradeId != null "> and grade_id = #{gradeId}</if>
+            <if test="classId != null "> and class_id = #{classId}</if>
+            <if test="courseId != null "> and course_id = #{courseId}</if>
+            <if test="teacherId != null "> and teacher_id = #{teacherId}</if>
+            <if test="classroomId != null "> and classroom_id = #{classroomId}</if>
+            <if test="times != null "> and times = #{times}</if>
+            <if test="duration != null "> and duration = #{duration}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="startTime != null "> and start_time = #{startTime}</if>
+            <if test="endTime != null "> and end_time = #{endTime}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+    
+    <select id="selectBizTeachingRecordById" parameterType="Long" resultMap="BizTeachingRecordResult">
+        <include refid="selectBizTeachingRecordVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="getLatestTeachingRecord" resultMap="BizTeachingRecordResult">
+        <include refid="selectBizTeachingRecordVo"/>
+        where academy_id=#{academyId} AND major_id=#{majorId} AND grade_id=#{gradeId} AND class_id=#{classId} AND status IN(0,1) LIMIT 1
+    </select>
+
+    <select id="getLatestTeachingRecordByCourseId" resultMap="BizTeachingRecordResult">
+        <include refid="selectBizTeachingRecordVo"/>
+        where academy_id=#{academyId} AND major_id=#{majorId}
+        AND grade_id=#{gradeId} AND class_id=#{classId} AND course_id=#{courseId}
+        AND status IN(0,1) AND teacher_id=#{teacherId} LIMIT 1
+    </select>
+
+    <insert id="insertBizTeachingRecord" parameterType="BizTeachingRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_teaching_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="academyId != null">academy_id,</if>
+            <if test="majorId != null">major_id,</if>
+            <if test="gradeId != null">grade_id,</if>
+            <if test="classId != null">class_id,</if>
+            <if test="courseId != null">course_id,</if>
+            <if test="teacherId != null">teacher_id,</if>
+            <if test="classroomId != null">classroom_id,</if>
+            <if test="times != null">times,</if>
+            <if test="duration != null">duration,</if>
+            <if test="status != null">status,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="endTime != null">end_time,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="academyId != null">#{academyId},</if>
+            <if test="majorId != null">#{majorId},</if>
+            <if test="gradeId != null">#{gradeId},</if>
+            <if test="classId != null">#{classId},</if>
+            <if test="courseId != null">#{courseId},</if>
+            <if test="teacherId != null">#{teacherId},</if>
+            <if test="classroomId != null">#{classroomId},</if>
+            <if test="times != null">#{times},</if>
+            <if test="duration != null">#{duration},</if>
+            <if test="status != null">#{status},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizTeachingRecord" parameterType="BizTeachingRecord">
+        update biz_teaching_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="academyId != null">academy_id = #{academyId},</if>
+            <if test="majorId != null">major_id = #{majorId},</if>
+            <if test="gradeId != null">grade_id = #{gradeId},</if>
+            <if test="classId != null">class_id = #{classId},</if>
+            <if test="courseId != null">course_id = #{courseId},</if>
+            <if test="teacherId != null">teacher_id = #{teacherId},</if>
+            <if test="classroomId != null">classroom_id=#{classroomId},</if>
+            <if test="times != null">times = #{times},</if>
+            <if test="duration != null">duration = #{duration},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizTeachingRecordById" parameterType="Long">
+        delete from biz_teaching_record where id = #{id}
+    </delete>
+
+    <delete id="deleteBizTeachingRecordByIds" parameterType="String">
+        delete from biz_teaching_record where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

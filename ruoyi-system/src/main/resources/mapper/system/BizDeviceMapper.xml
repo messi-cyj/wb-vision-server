@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizDeviceMapper">
+    
+    <resultMap type="BizDevice" id="BizDeviceResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="no"    column="no"    />
+        <result property="majorId"    column="major_id"    />
+        <result property="classroomId"    column="classroom_id"    />
+        <result property="type"    column="type"    />
+        <result property="ip"    column="ip"    />
+        <result property="port"    column="port"    />
+        <result property="username"    column="username"    />
+        <result property="password"    column="password"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizDeviceVo">
+        select id, name, no, major_id, classroom_id, type, ip, port, username, password, create_time, update_time, create_user_id, update_user_id from biz_device
+    </sql>
+
+    <select id="selectBizDeviceList" parameterType="BizDevice" resultMap="BizDeviceResult">
+        <include refid="selectBizDeviceVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="no != null  and no != ''"> and no = #{no}</if>
+            <if test="majorId != null "> and major_id = #{majorId}</if>
+            <if test="classroomId != null "> and classroom_id = #{classroomId}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="ip != null  and ip != ''"> and ip = #{ip}</if>
+            <if test="port != null "> and port = #{port}</if>
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+    
+    <select id="selectBizDeviceById" parameterType="Long" resultMap="BizDeviceResult">
+        <include refid="selectBizDeviceVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectBizDeviceByIdList" parameterType="List" resultMap="BizDeviceResult">
+        <include refid="selectBizDeviceVo"/>
+        where id IN
+        <foreach collection="idList" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <insert id="insertBizDevice" parameterType="BizDevice" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_device
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="no != null">no,</if>
+            <if test="majorId != null">major_id,</if>
+            <if test="classroomId != null">classroom_id,</if>
+            <if test="type != null">type,</if>
+            <if test="ip != null">ip,</if>
+            <if test="port != null">port,</if>
+            <if test="username != null">username,</if>
+            <if test="password != null">password,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="no != null">#{no},</if>
+            <if test="majorId != null">#{majorId},</if>
+            <if test="classroomId != null">#{classroomId},</if>
+            <if test="type != null">#{type},</if>
+            <if test="ip != null">#{ip},</if>
+            <if test="port != null">#{port},</if>
+            <if test="username != null">#{username},</if>
+            <if test="password != null">#{password},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizDevice" parameterType="BizDevice">
+        update biz_device
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="no != null">no = #{no},</if>
+            <if test="majorId != null">major_id = #{majorId},</if>
+            <if test="classroomId != null">classroom_id = #{classroomId},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="port != null">port = #{port},</if>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizDeviceById" parameterType="Long">
+        delete from biz_device where id = #{id}
+    </delete>
+
+    <delete id="deleteBizDeviceByIds" parameterType="String">
+        delete from biz_device where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

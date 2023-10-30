@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizClassMapper">
+    
+    <resultMap type="BizClass" id="BizClassResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="majorId"    column="major_id"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizClassVo">
+        select id, name, major_id, create_time, update_time, create_user_id, update_user_id from biz_class
+    </sql>
+
+    <select id="selectBizClassList" parameterType="BizClass" resultMap="BizClassResult">
+        <include refid="selectBizClassVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="majorId != null "> and major_id = #{majorId}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+    
+    <select id="selectBizClassById" parameterType="Long" resultMap="BizClassResult">
+        <include refid="selectBizClassVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizClass" parameterType="BizClass" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="majorId != null">major_id,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="majorId != null">#{majorId},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizClass" parameterType="BizClass">
+        update biz_class
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="majorId != null">major_id = #{majorId},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizClassById" parameterType="Long">
+        delete from biz_class where id = #{id}
+    </delete>
+
+    <delete id="deleteBizClassByIds" parameterType="String">
+        delete from biz_class where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

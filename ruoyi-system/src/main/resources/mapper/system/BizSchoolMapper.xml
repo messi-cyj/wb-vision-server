@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizSchoolMapper">
+    
+    <resultMap type="BizSchool" id="BizSchoolResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="description"    column="description"    />
+        <result property="hasAcademy"    column="has_academy"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="childSchool"    column="child_school"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizSchoolVo">
+        select id, name, description, has_academy, parent_id, child_school, create_time, update_time, create_user_id, update_user_id from biz_school
+    </sql>
+
+    <select id="selectBizSchoolList" parameterType="BizSchool" resultMap="BizSchoolResult">
+        <include refid="selectBizSchoolVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="description != null  and description != ''"> and description = #{description}</if>
+            <if test="hasAcademy != null "> and has_academy = #{hasAcademy}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="childSchool != null "> and child_school = #{childSchool}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+    
+    <select id="selectBizSchoolById" parameterType="Long" resultMap="BizSchoolResult">
+        <include refid="selectBizSchoolVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizSchool" parameterType="BizSchool" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_school
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="description != null">description,</if>
+            <if test="hasAcademy != null">has_academy,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="childSchool != null">child_school,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="description != null">#{description},</if>
+            <if test="hasAcademy != null">#{hasAcademy},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="childSchool != null">#{childSchool},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizSchool" parameterType="BizSchool">
+        update biz_school
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="hasAcademy != null">has_academy = #{hasAcademy},</if>
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="childSchool != null">child_school = #{childSchool},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizSchoolById" parameterType="Long">
+        delete from biz_school where id = #{id}
+    </delete>
+
+    <delete id="deleteBizSchoolByIds" parameterType="String">
+        delete from biz_school where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

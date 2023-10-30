@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizMemberMapper">
+    
+    <resultMap type="BizMember" id="BizMemberResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="name"    column="name"    />
+        <result property="password"    column="password"    />
+        <result property="mobile"    column="mobile"    />
+        <result property="email"    column="email"    />
+        <result property="identificationNumber"    column="identification_number"    />
+        <result property="birthday"    column="birthday"    />
+        <result property="status"    column="status"    />
+        <result property="avatar"    column="avatar"    />
+        <result property="schoolId"    column="school_id"    />
+        <result property="academyId"    column="academy_id"    />
+        <result property="majorId"    column="major_id"    />
+        <result property="gradeId"    column="grade_id"    />
+        <result property="classId"    column="class_id"    />
+        <result property="faceResourceId"    column="face_resource_id"    />
+        <result property="userType"    column="user_type"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="createUserId"    column="create_user_id"    />
+        <result property="updateUserId"    column="update_user_id"    />
+    </resultMap>
+
+    <sql id="selectBizMemberVo">
+        select id, user_id, name, password, mobile, email, identification_number, birthday, status, avatar, school_id, academy_id, major_id, grade_id, class_id, face_resource_id, user_type, create_time, update_time, create_user_id, update_user_id from biz_member
+    </sql>
+
+    <select id="selectBizMemberList" parameterType="BizMember" resultMap="BizMemberResult">
+        <include refid="selectBizMemberVo"/>
+        <where>  
+            <if test="userId != null  and userId != ''"> and user_id = #{userId}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="mobile != null  and mobile != ''"> and mobile = #{mobile}</if>
+            <if test="email != null  and email != ''"> and email = #{email}</if>
+            <if test="identificationNumber != null  and identificationNumber != ''"> and identification_number = #{identificationNumber}</if>
+            <if test="birthday != null  and birthday != ''"> and birthday = #{birthday}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
+            <if test="schoolId != null "> and school_id = #{schoolId}</if>
+            <if test="academyId != null "> and academy_id = #{academyId}</if>
+            <if test="majorId != null "> and major_id = #{majorId}</if>
+            <if test="gradeId != null "> and grade_id = #{gradeId}</if>
+            <if test="classId != null "> and class_id = #{classId}</if>
+            <if test="faceResourceId != null "> and face_resource_id = #{faceResourceId}</if>
+            <if test="userType != null "> and user_type = #{userType}</if>
+            <if test="createUserId != null  and createUserId != ''"> and create_user_id = #{createUserId}</if>
+            <if test="updateUserId != null  and updateUserId != ''"> and update_user_id = #{updateUserId}</if>
+        </where>
+        ORDER BY create_time desc
+    </select>
+    
+    <select id="selectBizMemberById" parameterType="Long" resultMap="BizMemberResult">
+        <include refid="selectBizMemberVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectBizMemberByUserId" parameterType="String" resultMap="BizMemberResult">
+        <include refid="selectBizMemberVo"/>
+        where user_id=#{userId}
+    </select>
+
+    <insert id="insertBizMember" parameterType="BizMember" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="name != null">name,</if>
+            <if test="password != null">password,</if>
+            <if test="mobile != null">mobile,</if>
+            <if test="email != null">email,</if>
+            <if test="identificationNumber != null">identification_number,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="status != null">status,</if>
+            <if test="avatar != null">avatar,</if>
+            <if test="schoolId != null">school_id,</if>
+            <if test="academyId != null">academy_id,</if>
+            <if test="majorId != null">major_id,</if>
+            <if test="gradeId != null">grade_id,</if>
+            <if test="classId != null">class_id,</if>
+            <if test="faceResourceId != null">face_resource_id,</if>
+            <if test="userType != null">user_type,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createUserId != null">create_user_id,</if>
+            <if test="updateUserId != null">update_user_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="name != null">#{name},</if>
+            <if test="password != null">#{password},</if>
+            <if test="mobile != null">#{mobile},</if>
+            <if test="email != null">#{email},</if>
+            <if test="identificationNumber != null">#{identificationNumber},</if>
+            <if test="birthday != null">#{birthday},</if>
+            <if test="status != null">#{status},</if>
+            <if test="avatar != null">#{avatar},</if>
+            <if test="schoolId != null">#{schoolId},</if>
+            <if test="academyId != null">#{academyId},</if>
+            <if test="majorId != null">#{majorId},</if>
+            <if test="gradeId != null">#{gradeId},</if>
+            <if test="classId != null">#{classId},</if>
+            <if test="faceResourceId != null">#{faceResourceId},</if>
+            <if test="userType != null">#{userType},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createUserId != null">#{createUserId},</if>
+            <if test="updateUserId != null">#{updateUserId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizMember" parameterType="BizMember">
+        update biz_member
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="mobile != null">mobile = #{mobile},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="identificationNumber != null">identification_number = #{identificationNumber},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="schoolId != null">school_id = #{schoolId},</if>
+            <if test="academyId != null">academy_id = #{academyId},</if>
+            <if test="majorId != null">major_id = #{majorId},</if>
+            <if test="gradeId != null">grade_id = #{gradeId},</if>
+            <if test="classId != null">class_id = #{classId},</if>
+            <if test="faceResourceId != null">face_resource_id = #{faceResourceId},</if>
+            <if test="userType != null">user_type = #{userType},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="createUserId != null">create_user_id = #{createUserId},</if>
+            <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizMemberById" parameterType="Long">
+        delete from biz_member where id = #{id}
+    </delete>
+
+    <delete id="deleteBizMemberByIds" parameterType="String">
+        delete from biz_member where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

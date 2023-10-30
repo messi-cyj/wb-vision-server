@@ -1,0 +1,10 @@
+
+Ujavascript:S1481p"4Remove the declaration of the unused 'tag' variable.(ûÄ¿“ûÿÿÿÿ
+Rjavascript:S1854p"1Remove this useless assignment to variable "tag".(ûÄ¿“ûÿÿÿÿ
+wjavascript:S6582…"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(ÃÆ¡K
+Vjavascript:S1481ô"4Remove the declaration of the unused 'max' variable.(öÊÚ¡úÿÿÿÿ
+Sjavascript:S1854ô"1Remove this useless assignment to variable "max".(öÊÚ¡úÿÿÿÿ
+}javascript:S6582š"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(ÁÌê¹øÿÿÿÿ
+}javascript:S6582¶"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(¶ð€Íþÿÿÿÿ
+}javascript:S6582¾"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(¶ð€Íþÿÿÿÿ
+}javascript:S6582È"[Prefer using an optional chain expression instead, as it's more concise and easier to read.(¶ð€Íþÿÿÿÿ

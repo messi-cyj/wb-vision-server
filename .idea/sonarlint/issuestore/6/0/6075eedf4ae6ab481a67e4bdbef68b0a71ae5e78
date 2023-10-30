@@ -1,0 +1,25 @@
+
+NWeb:AvoidCommentedOutCodeCheck@"Remove this commented out code.(ğ¡ÿËøÿÿÿÿ
+NWeb:AvoidCommentedOutCodeCheckz"Remove this commented out code.(Ô’ùäøÿÿÿÿ
+Ejavascript:S1128Â"(Remove this unused import of 'getMajor'.(ç‰†“
+Ejavascript:S1128Â"(Remove this unused import of 'delMajor'.(ç‰†“
+Ejavascript:S1128Â"(Remove this unused import of 'addMajor'.(ç‰†“
+Hjavascript:S1128Â"+Remove this unused import of 'updateMajor'.(ç‰†“
+Ljavascript:S1128Ã"*Remove this unused import of 'getAcademy'.(È„™ûÿÿÿÿ
+Ljavascript:S1128Ã"*Remove this unused import of 'delAcademy'.(È„™ûÿÿÿÿ
+Ljavascript:S1128Ã"*Remove this unused import of 'addAcademy'.(È„™ûÿÿÿÿ
+Ojavascript:S1128Ã"-Remove this unused import of 'updateAcademy'.(È„™ûÿÿÿÿ
+Jjavascript:S1128Ä"(Remove this unused import of 'getGrade'.(‘ë’ùøÿÿÿÿ
+Jjavascript:S1128Ä"(Remove this unused import of 'delGrade'.(‘ë’ùøÿÿÿÿ
+Jjavascript:S1128Ä"(Remove this unused import of 'addGrade'.(‘ë’ùøÿÿÿÿ
+Mjavascript:S1128Ä"+Remove this unused import of 'updateGrade'.(‘ë’ùøÿÿÿÿ
+Jjavascript:S1128Å"(Remove this unused import of 'getClass'.(ùÑ´‰úÿÿÿÿ
+Jjavascript:S1128Å"(Remove this unused import of 'delClass'.(ùÑ´‰úÿÿÿÿ
+Jjavascript:S1128Å"(Remove this unused import of 'addClass'.(ùÑ´‰úÿÿÿÿ
+Mjavascript:S1128Å"+Remove this unused import of 'updateClass'.(ùÑ´‰úÿÿÿÿ
+Ojavascript:S1128Æ"-Remove this unused import of 'listClassroom'.(Â¨æşÿÿÿÿ
+Kjavascript:S1128Ç")Remove this unused import of 'getCourse'.(ÓŒ‚Àúÿÿÿÿ
+Kjavascript:S1128Ç")Remove this unused import of 'delCourse'.(ÓŒ‚Àúÿÿÿÿ
+Kjavascript:S1128Ç")Remove this unused import of 'addCourse'.(ÓŒ‚Àúÿÿÿÿ
+Njavascript:S1128Ç",Remove this unused import of 'updateCourse'.(ÓŒ‚Àúÿÿÿÿ
+Gjavascript:S1128È"*Remove this unused import of 'listMember'.(…Êˆô
