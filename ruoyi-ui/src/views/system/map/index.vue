@@ -1,7 +1,7 @@
 <template>
   <div id="container" style="width: 100%; height: calc(100vh - 100px)">
-    <div class="info" style="z-index: 1;top:680px;padding-top: 2px;right:5px;padding-left: 2px;border-width:2px">
-      <button  @click="returnLocation"  style="padding-left: 230px;">点击我
+    <div class="info" style="z-index: 1;top:680px;padding-top: 2px;right:5px;padding-left: 2px;border-width:2px;">
+      <button  @click="returnLocation"  style="padding-left: -200px;">点击我
       </button>
 
     </div>
