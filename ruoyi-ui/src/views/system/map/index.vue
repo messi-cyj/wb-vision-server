@@ -1,16 +1,81 @@
 <template>
-  <div id="container" style="width: 100%; height: calc(100vh - 100px)">
-    <div class="info" style="z-index: 1;top:680px;padding-top: 2px;right:5px;padding-left: 2px;border-width:2px;">
-      <button  @click="returnLocation"  style="padding-left: -200px;">点击我
-      </button>
-
+  <div id="container" style="width: 99.8%; height: calc(100vh - 88px);z-index: auto">
+    <div class="main">
+      <div class="no-bottom" style="z-index: 1;top:60px;padding-top: 280px;padding-left: 10px;border-width:10px;margin: 10px">
+        <button class="button" @click="returnLocation">
+        </button>
+      </div>
     </div>
+
+    <!--    面形编辑-->
+
+    <div class="input-card" style="width: 120px;z-index: 1;margin-bottom: 100px;margin-right: 45px ">
+      <button class="btn" onclick="createPolygon()" style="margin-bottom: 5px">新建</button>
+      <button class="btn" onclick="polyEditor.open()" style="margin-bottom: 5px">开始编辑</button>
+      <button class="btn" onclick="polyEditor.close()">结束编辑</button>
+    </div>
+
+    <div class="card-box" style="padding-left: 450px; padding-top:450px;width: 1020px;margin-bottom: 1000px;margin-right: 405px" >
+      <button class="square-button"  style="margin-bottom: 5px; z-index: 1" >点击我</button>
+    </div>
+
   </div>
 
+
+
 </template>
+<style>
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: -15px;
+
+}
+
+.no-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 10px;
+//height: 50px;
+  transform: scale(0.5);
+  background-color: rgba(255,255,255,0);
+  border: none;
+}
+.button {
+  cursor: pointer;
+  background-position: center;
+  background-image: url("G:/MyProject/wb-vision-server/ruoyi-ui/src/assets/icons/png/position.png");
+  background-size: 45px 45px;
+  background-repeat: no-repeat;
+  font-size: 50px;
+  padding: 35px 35px; /* 设置按钮的内边距为10像素和20像素 */
+  border: none;
+}
+.square-button {
+  width: 100px;
+  height: 100px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  line-height: 100px;
+}
+
+
+
+</style>
+
 <script>
 
 import AMap from "AMap"
+
+
+
 
 let content = [
   "<div style='font-size: 14px; color: blue; width: 200px; height: 50px'>巨源科技</div>"
@@ -20,18 +85,17 @@ export default {
   data() {
     return {
       map: "",
-      marker1:"",
+      marker1: "",
+
     }
   },
   created() {
-    // this.createdMap();
-    // this.getLocation();
+
 
   },
   mounted() {
     this.getLocation();
     this.createdMap();
-
 
 
   },
@@ -42,24 +106,35 @@ export default {
       createdMap() {
         this.map = new AMap.Map("container", {
           viewMode: '3D',   //默认使用2D模式
-          // buildingAnimation:True,
-          // pitch:90,
           zoom: 12,
           center: [104.07078346008302, 30.57424885192265],
-          resizeEnable: true
         });
 
         const traffic = new AMap.TileLayer.Traffic({
           'autoRefresh': true,     //是否自动刷新，默认为false
           'interval': 60,         //刷新间隔，默认180s
         });
-        this.map.add(traffic); //通过add方法添加图层
 
+        //通过add方法添加图层
+        this.map.add(traffic);
+
+
+        //工具条
+        this.toolbar = new AMap.ToolBar({
+          position: 'RB',
+        });
+        this.map.addControl(this.toolbar);
+
+        //比例尺
+        this.scale = new AMap.Scale();
+        this.map.addControl(this.scale);
+
+        //工具条方向盘
+        this.controlBar = new AMap.ControlBar();
+        this.map.addControl(this.controlBar);
 
 
       },
-
-
       //自动获取ip地址
       getLocation() {
         let _this = this
@@ -80,33 +155,23 @@ export default {
                 title: '巨源科技'
               })
               _this.map.add(_this.marker1)
-              _this.map.setCenter([result.position.lng,result.position.lat])
+              _this.map.setCenter([result.position.lng, result.position.lat])
             } else {
               console.log(result)
             }
           });
         });
-
-
-
       },
 
+//返回IP地址中心点
+    returnLocation() {
+      console.log(this.marker1)
+      this.map.setCenter([this.marker1._position.lng, this.marker1._position.lat])
+    },
 
 
-      //返回IP地址中心点
-      returnLocation() {
-        console.log(this.marker1)
-        this.map.setCenter([this.marker1._position.lng,this.marker1._position.lat])
-      }
-    }
+  }
 
 }
 
 </script>
-
-
-
-
-
-
-

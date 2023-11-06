@@ -277,3 +277,9 @@ F
 ruoyi-ui/.editorconfig,3\2\3252bc4fce379f45fa806000505d3eabb9403dd3
 I
 ruoyi-ui/.env.development,8\2\82a8ca4d9f00d664666322aded92761c5fd254a7
+S
+#ruoyi-ui/src/api/system/dict/map.js,4\f\4faa8145a3d92ac3e05cba24bf69437e13c9d532
+O
+ruoyi-ui/src/api/system/post.js,9\4\941fa6a2f4b16e2ffa5a692f1b2fe2895bfea2a9
+Q
+!ruoyi-ui/src/api/system/school.js,2\9\294527dce9a22c3579ff5b042a4b896fa7dc80b1
