@@ -1,32 +1,23 @@
 <template>
-
-  <div id="container" style="width: 99.8%; height: calc(100vh - 88px);z-index: 100">
+  <div id="container" style="width: 99.8%; height: calc(100vh - 88px);z-index: auto">
     <div class="main">
-      <div class="no-bottom" style="z-index: 99;top:60px;padding-top: 280px;padding-left: 10px;border-width:10px;margin: 10px">
+      <div class="no-bottom" style="z-index: 1;top:60px;padding-top: 280px;padding-left: 10px;border-width:10px;margin: 10px">
         <button class="button" @click="returnLocation">
         </button>
       </div>
     </div>
-
-
-
-    <!--    面形编辑-->
-    <div class="input-card" style="z-index: 99;margin-bottom: 130px;">
-      <button class="btn" onclick="createPolygon()" style="border: none;">新建</button>
-
+    <div class="input-card"style="z-index: 1;margin-bottom: 130px">
+      <div class="dropdown " >
+        <span >新建</span>
+        <div class="dropdown-content" style="coursor:pointer;width: 55px;left:-15px;padding-left: 7px;">
+          <button class="btn" onclick="createPolygon()" >新建</button>
+          <button class="btn" onclick="polyEditor.open()" >开始</button>
+          <button class="btn" onclick="polyEditor.close()">结束</button>
+        </div>
+      </div>
     </div>
-
-
-
   </div>
-
-
-
-
-
-
 </template>
-
 
 <style>
 .main {
@@ -47,6 +38,7 @@
 //height: 50px;
   transform: scale(0.5);
   background-color: rgba(255,255,255,0);
+  border: none;
 }
 .button {
   cursor: pointer;
@@ -58,31 +50,35 @@
   padding: 35px 35px; /* 设置按钮的内边距为10像素和20像素 */
   border: none;
 }
+.dropdown {
+  position: relative;
+//display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+//min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  margin-top: 0px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 .input-card{
-  width: 35px;
-  height: 35px;
-  margin-right: 3px;
-  border-color: black;
-  border-width: 3px;
+  width: 55px;
+
+  writing-mode: horizontal-tb
 }
 .btn{
-  border: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
- width: 100%;
- height: 100%;
-  color: black;
+ margin: 2px;
 }
-.card{
-  border: none;
-  writing-mode: horizontal-tb;
-}
-
-
-
-
 
 </style>
 
@@ -104,6 +100,7 @@ export default {
       map: "",
       marker1: "",
 
+
     }
   },
   created() {
@@ -114,6 +111,7 @@ export default {
     this.getLocation();
     this.createdMap();
 
+    this.createPolygon();
 
   },
   name: "AMap",
@@ -151,8 +149,41 @@ export default {
         this.map.addControl(this.controlBar);
 
 
+        //区域框
+        var path1 = [[104.04051741355897, 30.66617092170566],[104.0374248265648,30.667545950457814] ,[104.03208991283418,30.66851491869663], [104.0331198810959, 30.673221197628028], [104.03778156036378, 30.67198466811501], [104.03832336658479, 30.67301818640633], [104.04031893009187, 30.672409150177455]]
+
+        var polygon1 = new AMap.Polygon({
+          path: path1
+        })
+
+        this.map.add([polygon1]);
+        this.map.setFitView();
+        var polyEditor = new AMap.PolygonEditor(map);
+        polyEditor.addAdsorbPolygons([polygon1]);
+        polyEditor.on('add', function (data) {
+          console.log(data);
+          var polygon = data.target;
+          polyEditor.addAdsorbPolygons(polygon);
+          polygon.on('dblclick', () => {
+            polyEditor.setTarget(polygon);
+            polyEditor.open();
+          })
+        })
+        polygon1.on('dblclick', () => {
+          polyEditor.setTarget(polygon1);
+          polyEditor.open();
+        })
+        function createPolygon() {
+          polyEditor.close();
+          polyEditor.setTarget();
+          polyEditor.open();
+        }
+        polyEditor.setTarget(polygon2);
+        polyEditor.open();
 
       },
+
+
       //自动获取ip地址
       getLocation() {
         let _this = this

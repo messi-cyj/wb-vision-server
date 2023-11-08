@@ -1,5 +1,9 @@
 {
-  "dependencies": {
+  "devDependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1"
+  },
+  "dependencies": {
+    "amap": "^1.0.7",
+    "index": "^0.4.0"
   }
 }
