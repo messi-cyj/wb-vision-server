@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "amap": "^1.0.7",
-    "index": "^0.4.0"
+    "index": "^0.4.0",
+    "vue-amap": "^0.5.10"
   }
 }

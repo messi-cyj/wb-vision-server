@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{citys, demo-center, demoutils}" />
+    <file url="file://$PROJECT_DIR$/ruoyi-admin" libraries="{demoutils}" />
+    <file url="file://$PROJECT_DIR$/ruoyi-common" libraries="{demoutils}" />
+    <file url="file://$PROJECT_DIR$/ruoyi-framework" libraries="{demoutils}" />
+    <file url="file://$PROJECT_DIR$/ruoyi-generator" libraries="{demoutils}" />
+    <file url="file://$PROJECT_DIR$/ruoyi-quartz" libraries="{demoutils}" />
+    <file url="file://$PROJECT_DIR$/ruoyi-system" libraries="{demoutils}" />
+  </component>
+</project>

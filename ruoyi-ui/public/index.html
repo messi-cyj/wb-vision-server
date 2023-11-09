@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-	  <style>
+<head>
+  <title>多边形编辑器吸附功能</title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <script src="https://webapi.amap.com/maps?v=2.0&9f30efbe932a35d63929ea3f96a5a4ee&plugin=AMap.PolygonEditor,AMap.PolyEditor,AMap.Polygon,AMap.MouseTool"></script>
+  <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+  <style>
     html,
     body,
     #app {
       height: 100%;
       margin: 0px;
       padding: 0px;
-    }
-    .chromeframe {
-      margin: 0.2em 0;
-      background: #ccc;
-      color: #000;
-      padding: 0.2em 0;
     }
 
     #loader-wrapper {
@@ -197,36 +194,39 @@
   </style>
 
 
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width,initial-scale=1.0">
-      <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-      <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-      <title><%= htmlWebpackPlugin.options.title %></title>
-      <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
-      <script src='https://a.amap.com/jsapi_demos/static/citys.js'></script>
-      <script src="//cache.amap.com/lbs/static/es5.min.js"></script>
-      <script src="//webapi.amap.com/maps?v=2.0&key=9f30efbe932a35d63929ea3f96a5a4ee&&plugin=AMap.Scale,AMap.HawkEye,AMap.ToolBar,AMap.ControlBar,AMap.getPanes,AMap.createPolygon,AMap.polyEditor"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+  <script src='https://a.amap.com/jsapi_demos/static/citys.js'></script>
+  <script src="//cache.amap.com/lbs/static/es5.min.js"></script>
+  <script src="//webapi.amap.com/maps?v=2.0&key=9f30efbe932a35d63929ea3f96a5a4ee&plugin=Amap.ControlBar,AMap,TooBar,AMap.ToolBar,AMap.Scale,AMap.ControlBar,AMap.PolygonEditor,AMap.MouseTool "></script>
 
-  </head>
-  <body>
-
-
-    <div id="app">
-	    <div id="loader-wrapper">
-		    <div id="loader"></div>
-		    <div class="loader-section section-left"></div>
-		    <div class="loader-section section-right"></div>
-		    <div class="load_title">正在加载系统资源，请耐心等待</div>
-        </div>
-	</div>
+</head>
+<body>
 
 
 
+<div id="app">
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+    <div class="load_title">正在加载系统资源，请耐心等待</div>
+  </div>
+</div>
 
-  </body>
-  <!-- 高德地图资源文件的引入（注意key=自己申请的key） -->
-<!--  <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=9f30efbe932a35d63929ea3f96a5a4ee&plugin=AMap.ControlBar,AMap,TooBar,AMap.ToolBar,AMap.Scale,AMap.ControlBar,AMap.getPanes,AMap.createPolygon(),AMap.polyEditor "></script>-->
+
+
+
+</body>
+<!-- 高德地图资源文件的引入（注意key=自己申请的key） -->
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=9f30efbe932a35d63929ea3f96a5a4ee&plugin=map.ControlBar,AMap,TooBar,AMap.ToolBar,AMap.Scale,AMap.ControlBar,AMap.PolygonEditor,AMap.MouseTool "></script>
+
+
 <!--  地图初始化加载定位到当前城市-->
 
 </html>
