@@ -1,5 +1,16 @@
 import Vue from 'vue'
 
+// 引入vue-amap
+import AMap from 'vue-amap';
+Vue.use(AMap);
+// 初始化vue-amap
+AMap.initAMapApiLoader({
+  // 申请的高德key
+  key: '9f30efbe932a35d63929ea3f96a5a4ee',
+  // 插件集合
+  plugin:  ['AMap.ControlBar','AMap,TooBar','AMap.ToolBar','AMap.Scale','AMap.ControlBar','AMap.PolygonEditor','AMap.MouseTool','AMap.RangingTool','AMap.DistanceTool','AMap.Autocomplete', 'AMap.PlaceSearch','AMap.MouseTool'],
+  v: '2.0',
+});
 
 
 

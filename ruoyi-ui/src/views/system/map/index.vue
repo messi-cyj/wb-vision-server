@@ -7,15 +7,12 @@
         </button>
       </div>
     </div>
-<!--    <div class="input-card" style="z-index: 1;margin-bottom: 130px">-->
-<!--      <div class="dropdown ">-->
-<!--        <span >新建</span>-->
-<!--        <div class="dropdown-content" style=";coursor:pointer;width: 55px;left:-15px;padding-left: 10px;">-->
-<!--          <button class="btn" @click="createPolygon()" style="margin-bottom: 5px">编辑</button>-->
-<!--          <button class="btn" @click="polyEditor.open()" style="margin-bottom: 5px">开始</button>-->
-<!--          <button class="btn" @click="polyEditor.close()">结束</button>-->
-<!--        </div>-->
-<!--      </div>-->
+
+
+
+
+
+
 
 
 
@@ -27,9 +24,11 @@
 <!--  </div>-->
 </template>
 
+
 <script>
 
-import AMap from "AMap"
+import AMap from "AMap";
+
 
 
 let content = [
@@ -52,7 +51,9 @@ export default {
   mounted() {
     this.getLocation();
     this.createdMap();
-    this.createPolygon();
+
+
+
 
   },
   name: "AMap",
@@ -89,40 +90,44 @@ export default {
         this.map.addControl(this.controlBar);
 
 
-        //创建右键菜单
-        // var contextMenu = new AMap.ContextMenu();
 
-
-
-      },
-      createPolygon() {
-        var path1 = [[104.04051741355897, 30.66617092170566], [104.0374248265648, 30.667545950457814], [104.03208991283418, 30.66851491869663], [104.0331198810959, 30.673221197628028], [104.03567334407808,30.67266752965043],[104.03778156036378, 30.67198466811501], [104.03832336658479, 30.67301818640633], [104.04031893009187, 30.672409150177455]];
-
-        var polygon1 = new AMap.Polygon({
-          path: path1
-        });
-
-        this.map.add(polygon1);
-        // this.map.setFitView();
-        // let polyEditor = new AMap.PolygonEditor(this.map);
-        // polyEditor.addAdsorbPolygons([polygon1]);
-        // polyEditor.on('add', function (data) {
-        //   console.log(data);
-        //   let polygon = data.target;
-        //   polyEditor.addAdsorbPolygons(polygon);
-        //   polygon.on('dblclick', () => {
-        //     polyEditor.setTarget(polygon);
-        //     polyEditor.open();
-        //   });
+        //创建区域
+        // var path1 = [[104.04051741355897, 30.66617092170566], [104.0374248265648, 30.667545950457814], [104.03208991283418, 30.66851491869663], [104.0331198810959, 30.673221197628028], [104.03567334407808,30.67266752965043],[104.03778156036378, 30.67198466811501], [104.03832336658479, 30.67301818640633], [104.04031893009187, 30.672409150177455]];
+        // var polygon1 = new AMap.Polygon({
+        //   path: path1
         // });
-        // polyEditor.setTarget(polygon1);
-        // polyEditor.open();
+        // this.map.add(polygon1);
+
+        // 测量距离
+        // var ruler2 = new AMap.RangingTool(this.map,{
+        //   startLabelText:"开始",
+        //   midLabelText:"经过",
+        //   endLabelText:"结束"
+        // });
+        // ruler2.turnOn(); //开启绘制
         //
-        // polygon1.on('dblclick', () => {
-        //   polyEditor.setTarget(polygon1);
-        //   polyEditor.close();
+        // AMap.Event.addListener(ruler2,"end",function(e){
+        //   console.log(e.points) //绘制测量工具点结束的数据
+        //   ruler2.turnOff()  //关闭绘制
+        //     // ps:如果遇到AMap.Event报错，先打印AMap，观察下面的参数
+        //     AMap.Event.addListener(ruler2,"remove-node",function(e){
+        //       console.log(e.distance) //删除一段节点返回的数据
         // });
+        // });
+
+
+
+
+
+
+
+
+
+
       },
+
+
+
 
 
       //自动获取ip地址
